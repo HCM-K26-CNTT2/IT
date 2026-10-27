@@ -1,0 +1,28 @@
+﻿Chức năng 1:
+* mkdir smartfarm-system/docs, smartfarm-system/scripts, smartfarm-system/data, smartfarm-system/backup
+
+
+* Đang ở thư mục Data
+* ../Data/ để lùi về thư mục smartfarm-system
+* New-Item DB_PASSWORD=demo_123456.env
+
+
+* (Get-Item DB_PASSWORD=demo_123456.env).Attributes = “Hidden”
+
+
+Chức năng 2:
+* New-Item  ./smartfarm-system/scripts/auto_report.ps1
+* cd Smartfarm-system/scripts
+* ./auto_report.ps1
+
+
+* cd ./backup/bao-cao-su-co.txt
+* @echo off để xóa các lệnh rác
+* echo “ === BAO CAO SU CO - SMARTFARM === “ > bao-cao-su-co.txt (ghi đè lên file để hiện đó là tiêu đề )
+* Get-Date  >>  bao-cao-su-co.txt ( ghi nối tiếp vào để ko bị mất nội dung trước)
+
+
+* Get-Content log-he-thong.log | select-string “CRITICAL” >> bao-cao-su-co.txt
+* Write-Output “TONG SO SU CO” >> bao-cao-su-co.txt
+* Get-Content log-he-thong.log | select-string “ERROR” | Measure-Object -Line >> bao-cao-su-co.txt
+* # AUDIT
